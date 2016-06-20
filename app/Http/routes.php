@@ -16,6 +16,6 @@ Route::get('/', function () {
 });
 
 Route::get('/test', function () {
-    $repository = app()->make('CodeDelivery\Repositories\CategoryRepository');
+    $repository = app()->make('CodeDelivery\Repositories\UserRepository');
     return $repository->all();
 });
