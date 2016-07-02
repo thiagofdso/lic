@@ -20,6 +20,7 @@
                     <td>{{$category->id}}</td>
                     <td>{{$category->name}}</td>
                     <td >
+                        <a href="{{route('admin.categories.show',['id'=>$category->id])}}" class="btn btn-info ">Exibir</a>
                         <a href="{{route('admin.categories.edit',['id'=>$category->id])}}" class="btn btn-info ">Editar</a>
                         <a href="{{route('admin.categories.destroy',['id'=>$category->id])}}" class="btn btn-danger ">Excluir</a>
                     </td>

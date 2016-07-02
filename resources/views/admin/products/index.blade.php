@@ -24,6 +24,7 @@
                     <td>{{number_format($product->price, 2, ',', '.')}}</td>
                     <td>{{$product->category->name}}</td>
                     <td >
+                        <a href="{{route('admin.products.show',['id'=>$product->id])}}" class="btn btn-info ">Exibir</a>
                         <a href="{{route('admin.products.edit',['id'=>$product->id])}}" class="btn btn-info ">Editar</a>
                         <a href="{{route('admin.products.destroy',['id'=>$product->id])}}" class="btn btn-danger ">Excluir</a>
                     </td>

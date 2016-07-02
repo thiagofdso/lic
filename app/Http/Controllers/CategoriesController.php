@@ -30,6 +30,11 @@ class CategoriesController extends Controller
         return redirect(route('admin.categories.index'));
     }
 
+    public function show($id){
+        $category = $this->repository->find($id);
+        return view('admin.categories.show',compact('category'));
+    }
+
     public function edit($id){
         $category = $this->repository->find($id);
         return view('admin.categories.edit',compact('category'));
@@ -43,9 +48,4 @@ class CategoriesController extends Controller
         $this->repository->delete($id);
         return redirect(route('admin.categories.index'));
     }
-    public function cancel(){
-        return redirect(route('admin.categories.index'));
-    }
-
-
 }

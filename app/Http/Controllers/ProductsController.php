@@ -33,6 +33,11 @@ class ProductsController extends Controller
         return redirect(route('admin.products.index'));
     }
 
+    public function show($id){
+        $product = $this->repository->find($id);
+        return view('admin.products.show',compact('product'));
+    }
+
     public function edit($id){
         $product = $this->repository->find($id);
         $categories = $this->categoryRepository->lists('name','id');
@@ -47,8 +52,4 @@ class ProductsController extends Controller
         $this->repository->delete($id);
         return redirect(route('admin.products.index'));
     }
-    public function cancel(){
-        return redirect(route('admin.products.index'));
-    }
-
 }

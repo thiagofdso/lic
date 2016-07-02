@@ -19,7 +19,7 @@
 
     <div class="form-group">
         {!! Form::submit('Criar', ['class'=>'btn btn-primary']) !!}
-        <a href="{{route('admin.categories.cancel')}}" class="btn btn-info">Cancelar</a>
+        <a href="{{URL::previous()}}" class="btn btn-info">Cancelar</a>
     </div>
 
     {!! Form::close() !!}
