@@ -32,11 +32,12 @@
 			</div>
 
 			<div class="collapse navbar-collapse" id="navbar">
-				<ul class="nav navbar-nav">
-					<li><a href="{{ route('admin.categories.index') }}">Categorias</a></li>
-					<li><a href="{{ route('admin.products.index') }}">Produtos</a></li>
-				</ul>
-
+				@if (Auth::check() && Auth::user()->role=='admin')
+					<ul class="nav navbar-nav">
+						<li><a href="{{ route('admin.categories.index') }}">Categorias</a></li>
+						<li><a href="{{ route('admin.products.index') }}">Produtos</a></li>
+					</ul>
+				@endif
 				<ul class="nav navbar-nav navbar-right">
 					@if(auth()->guest())
 						@if(!Request::is('auth/login'))

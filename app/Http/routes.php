@@ -13,7 +13,7 @@
 
 
 
-Route::group(['prefix'=>'admin'],function() {
+Route::group(['prefix'=>'admin','middleware'=>'auth.checkrole'],function() {
     Route::resource('categories','CategoriesController');
     Route::resource('products','ProductsController');
 });
