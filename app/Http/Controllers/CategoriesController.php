@@ -18,7 +18,7 @@ class CategoriesController extends Controller
     }
 
     public function index(CategoryRepository $repository){
-        $categories = $this->repository->paginate(5);
+        $categories = $this->repository->paginate(10);
         return view('admin.categories.index',compact('categories'));
     }
     public function create(){
@@ -34,7 +34,7 @@ class CategoriesController extends Controller
         $category = $this->repository->find($id);
         return view('admin.categories.edit',compact('category'));
     }
-    public function update($id,Request $request){
+    public function update($id,AdminCategoryRequest $request){
         $this->repository->find($id);
         $this->repository->update($request->all(),$id);
         return redirect(route('admin.categories.index'));
