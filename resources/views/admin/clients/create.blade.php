@@ -1,8 +1,8 @@
 @extends('app')
 @section('content')
 
-    <h3>Editar Produto</h3>
-    {!! Form::model($product,['route'=>['admin.products.update',$product->id],'method'=>'put']) !!}
+    <h3>Criar novo Cliente</h3>
+    {!! Form::open(['route'=>'admin.clients.store','method'=>'post']) !!}
     <!-- Form Input Tags    -->
     @if($errors->any())
         <div class="alert alert-danger">
@@ -13,13 +13,12 @@
             </ul>
         </div>
     @endif
-
-    @include('admin.products.form')
+    @include('admin.clients.form')
 
     <!-- Form Submit-->
 
     <div class="form-group">
-        {!! Form::submit('Salvar', ['class'=>'btn btn-primary']) !!}
+        {!! Form::submit('Criar', ['class'=>'btn btn-primary']) !!}
         <a href="{{URL::previous()}}" class="btn btn-info">Cancelar</a>
     </div>
 

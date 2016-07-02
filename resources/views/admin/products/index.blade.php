@@ -22,11 +22,17 @@
                     <td>{{$product->id}}</td>
                     <td>{{$product->name}}</td>
                     <td>{{number_format($product->price, 2, ',', '.')}}</td>
-                    <td>{{$product->category->name}}</td>
+                    <td>
+                    @if($product->category!='')
+                    {{$product->category->name}}
+                    @endif
+                    </td>
                     <td >
+                        {!! Form::open(['route'=>['admin.products.destroy',$product->id],'method'=>'delete']) !!}
                         <a href="{{route('admin.products.show',['id'=>$product->id])}}" class="btn btn-info ">Exibir</a>
                         <a href="{{route('admin.products.edit',['id'=>$product->id])}}" class="btn btn-info ">Editar</a>
-                        <a href="{{route('admin.products.destroy',['id'=>$product->id])}}" class="btn btn-danger ">Excluir</a>
+                        {!! Form::submit('Excluir', ['class'=>'btn btn-danger']) !!}
+                        {!! Form::close() !!}
                     </td>
                 </tr>
                 @endforeach

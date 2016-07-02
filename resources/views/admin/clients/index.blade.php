@@ -1,9 +1,9 @@
 @extends('app')
 @section('content')
 
-        <h3>Categorias</h3>
+        <h3>Clientes</h3>
         <br>
-        <a href="{{route('admin.categories.create')}}" class="btn btn-success">Nova Categoria</a>
+        <a href="{{route('admin.clients.create')}}" class="btn btn-success">Novo Cliente</a>
         <br><br>
         <div class="col-md-8">
             <table class="table table-responsive">
@@ -15,14 +15,14 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($categories as $category)
+                @foreach($clients as $client)
                 <tr>
-                    <td>{{$category->id}}</td>
-                    <td>{{$category->name}}</td>
+                    <td>{{$client->id}}</td>
+                    <td>{{$client->user->name}}</td>
                     <td >
-                        {!! Form::open(['route'=>['admin.categories.destroy',$category->id],'method'=>'delete']) !!}
-                        <a href="{{route('admin.categories.show',['id'=>$category->id])}}" class="btn btn-info ">Exibir</a>
-                        <a href="{{route('admin.categories.edit',['id'=>$category->id])}}" class="btn btn-info ">Editar</a>
+                        {!! Form::open(['route'=>['admin.clients.destroy',$client->id],'method'=>'delete']) !!}
+                        <a href="{{route('admin.clients.show',['id'=>$client->id])}}" class="btn btn-info ">Exibir</a>
+                        <a href="{{route('admin.clients.edit',['id'=>$client->id])}}" class="btn btn-info ">Editar</a>
                         {!! Form::submit('Excluir', ['class'=>'btn btn-danger']) !!}
                         {!! Form::close() !!}
                     </td>
@@ -30,7 +30,7 @@
                 @endforeach
                 </tbody>
             </table>
-            {{$categories->render()}}
+            {{$clients->render()}}
         </div>
 
 @endsection

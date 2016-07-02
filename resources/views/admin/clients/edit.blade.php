@@ -1,8 +1,8 @@
 @extends('app')
 @section('content')
 
-    <h3>Editar Produto</h3>
-    {!! Form::model($product,['route'=>['admin.products.update',$product->id],'method'=>'put']) !!}
+    <h3>Editar Cliente</h3>
+    {!! Form::model($client,['route'=>['admin.clients.update',$client->id],'method'=>'put']) !!}
     <!-- Form Input Tags    -->
     @if($errors->any())
         <div class="alert alert-danger">
@@ -14,7 +14,7 @@
         </div>
     @endif
 
-    @include('admin.products.form')
+    @include('admin.clients.form')
 
     <!-- Form Submit-->
 
