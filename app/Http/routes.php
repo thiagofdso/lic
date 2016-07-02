@@ -11,6 +11,17 @@
 |
 */
 
+Route::group(['prefix'=>'admin'],function() {
+    Route::group(['prefix'=>'categories'],function() {
+        Route::get('',['as' => 'admin.categories.index','uses'=>'CategoriesController@index']);
+        Route::get('create',['as' => 'admin.categories.create','uses'=>'CategoriesController@create']);
+        Route::post('store',['as' => 'admin.categories.store','uses'=>'CategoriesController@store']);
+        Route::get('edit/{id}', ['as' => 'admin.categories.edit', 'uses' => 'CategoriesController@edit']);
+        Route::put('update/{id}', ['as' => 'admin.categories.update', 'uses' => 'CategoriesController@update']);
+        Route::get('destroy/{id}', ['as' => 'admin.categories.destroy', 'uses' => 'CategoriesController@destroy']);
+        Route::get('cancel', ['as' => 'admin.categories.cancel', 'uses' => 'CategoriesController@cancel']);
+    });
+});
 Route::get('/', function () {
     return view('app');
 });

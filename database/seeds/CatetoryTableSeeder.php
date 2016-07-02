@@ -12,7 +12,7 @@ class CatetoryTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Category::class,5)->create()->each(function($c){
+        factory(Category::class,15)->create()->each(function($c){
            for($i=0; $i<5; $i++){
                $c->products()->save(factory(Product::class)->make());
            }

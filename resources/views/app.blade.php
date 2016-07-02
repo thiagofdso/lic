@@ -28,12 +28,12 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">CodeDelivery</a>
+				<a class="navbar-brand" href="{{url('/')}}">CodeDelivery</a>
 			</div>
 
 			<div class="collapse navbar-collapse" id="navbar">
 				<ul class="nav navbar-nav">
-					<li><a href="{{ url('/') }}">Bem vindo</a></li>
+					<li><a href="{{ route('admin.categories.index') }}">Categorias</a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
@@ -56,9 +56,9 @@
 			</div>
 		</div>
 	</nav>
-
+	<div class="container">
 	@yield('content')
-
+	</div>
 	<!-- Scripts -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
