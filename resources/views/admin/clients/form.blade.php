@@ -3,7 +3,7 @@
 
 <div class="form-group">
     {!! Form::label('user','Usuário:') !!}
-    {!! Form::select('user_id',$users,null,['class'=>'form-control']) !!}
+    {!! Form::text('user[name]',null,['class'=>'form-control']) !!}
 </div>
 
 

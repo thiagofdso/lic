@@ -7,17 +7,18 @@ use CodeDelivery\Repositories\UserRepository;
 use Illuminate\Http\Request;
 use CodeDelivery\Http\Requests\AdminClientRequest;
 use CodeDelivery\Http\Requests;
+use CodeDelivery\Services\ClientService;
 
 class clientsController extends Controller
 {
 
     private $repository;
-    private $userrepository;
+    private $clientService;
 
-    public function __construct(ClientRepository $repository,UserRepository $userrepository)
+    public function __construct(ClientRepository $repository,ClientService $clientService)
     {
         $this->repository = $repository;
-        $this->userrepository = $userrepository;
+        $this->clientService = $clientService;
     }
 
     public function index(ClientRepository $repository){
@@ -25,8 +26,7 @@ class clientsController extends Controller
         return view('admin.clients.index',compact('clients'));
     }
     public function create(){
-        $users = $this->userrepository->lists('name','id');
-        return view('admin.clients.create',compact('users'));
+        return view('admin.clients.create');
     }
 
     public function store(AdminClientRequest $request){
@@ -41,12 +41,10 @@ class clientsController extends Controller
 
     public function edit($id){
         $client = $this->repository->find($id);
-        $users = $this->userrepository->lists('name','id');
-        return view('admin.clients.edit',compact('client','users'));
+        return view('admin.clients.edit',compact('client'));
     }
     public function update($id,AdminClientRequest $request){
-        $this->repository->find($id);
-        $this->repository->update($request->all(),$id);
+        $this->clientService->update($request->all(),$id);
         return redirect(route('admin.clients.index'));
     }
     public function destroy($id){
