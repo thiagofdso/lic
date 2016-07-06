@@ -20,9 +20,14 @@ class Order extends Model implements Transformable
     public function items(){
         return $this->hasMany(OrderItem::class);
     }
-    public function deliveryman(){
+    public function client(){
         return $this->belongsTo(User::class);
     }
-
+    public function deliveryman(){
+        return $this->belongsTo(User::class,'user_deliveryman_id');
+    }
+    public function  getStatus(){
+        return EnumOrderStatus::getStatus($this->status);
+    }
 
 }

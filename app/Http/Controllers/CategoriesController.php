@@ -17,7 +17,7 @@ class CategoriesController extends Controller
         $this->repository = $repository;
     }
 
-    public function index(CategoryRepository $repository){
+    public function index(){
         $categories = $this->repository->paginate(10);
         return view('admin.categories.index',compact('categories'));
     }

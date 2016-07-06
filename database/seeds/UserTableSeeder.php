@@ -37,8 +37,9 @@ class UserTableSeeder extends Seeder
             'confirmed'=>1,
             'role'=>'client',
         ]);
-        factory(User::class,5)->create()->each(function($u){
+        factory(User::class,7)->create()->each(function($u){
             $u->client()->save(factory(Client::class)->make());
         });
+        factory(User::class,3)->create(['role'=>'deliveryman']);
     }
 }

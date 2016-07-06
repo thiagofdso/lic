@@ -13,6 +13,10 @@
             </ul>
         </div>
     @endif
+    <div class="form-group">
+        {!! Form::label('email','Email:') !!}
+        {!! Form::text('user[email]',null,['class'=>'form-control']) !!}
+    </div>
     @include('admin.clients.form')
 
     <!-- Form Submit-->

@@ -30,7 +30,7 @@ class clientsController extends Controller
     }
 
     public function store(AdminClientRequest $request){
-        $this->repository->create($request->all());
+        $this->clientService->store($request->all());
         return redirect(route('admin.clients.index'));
     }
 
