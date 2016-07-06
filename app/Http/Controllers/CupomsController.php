@@ -2,9 +2,9 @@
 
 namespace CodeDelivery\Http\Controllers;
 
-use CodeDelivery\Repositories\cupomRepository;
+use CodeDelivery\Repositories\CupomRepository;
 use Illuminate\Http\Request;
-use CodeDelivery\Http\Requests\AdmincupomRequest;
+use CodeDelivery\Http\Requests\AdminCupomRequest;
 use CodeDelivery\Http\Requests;
 
 class cupomsController extends Controller
@@ -12,7 +12,7 @@ class cupomsController extends Controller
 
     private $repository;
 
-    public function __construct(cupomRepository $repository)
+    public function __construct(CupomRepository $repository)
     {
         $this->repository = $repository;
     }
@@ -25,7 +25,7 @@ class cupomsController extends Controller
         return view('admin.cupoms.create');
     }
 
-    public function store(Request $request){
+    public function store(AdminCupomRequest $request){
         $this->repository->create($request->all());
         return redirect(route('admin.cupoms.index'));
     }
@@ -39,7 +39,7 @@ class cupomsController extends Controller
         $cupom = $this->repository->find($id);
         return view('admin.cupoms.edit',compact('cupom'));
     }
-    public function update($id,Request $request){
+    public function update($id,AdminCupomRequest $request){
         $this->repository->find($id);
         $this->repository->update($request->all(),$id);
         return redirect(route('admin.cupoms.index'));
