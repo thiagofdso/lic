@@ -18,6 +18,7 @@ Route::group(['prefix'=>'admin','middleware'=>'auth.checkrole'],function() {
     Route::resource('products','ProductsController');
     Route::resource('clients','ClientsController');
     Route::resource('orders','OrdersController');
+    Route::resource('cupoms','CupomsController');
 });
 Route::get('/', function () {
     return view('app');
