@@ -32,7 +32,8 @@
 			</div>
 
 			<div class="collapse navbar-collapse" id="navbar">
-				@if (Auth::check() && Auth::user()->role=='admin')
+				@if (Auth::check())
+					@if (Auth::user()->role=='admin')
 					<ul class="nav navbar-nav">
 						<li><a href="{{ route('admin.categories.index') }}">Categorias</a></li>
 						<li><a href="{{ route('admin.products.index') }}">Produtos</a></li>
@@ -40,6 +41,12 @@
 						<li><a href="{{ route('admin.orders.index') }}">Pedidos</a></li>
 						<li><a href="{{ route('admin.cupoms.index') }}">Cupoms</a></li>
 					</ul>
+					@endif
+					@if (Auth::user()->role=='client')
+						<ul class="nav navbar-nav">
+							<li><a href="{{ route('customer.order.index') }}">Pedidos</a></li>
+						</ul>
+					@endif
 				@endif
 				<ul class="nav navbar-nav navbar-right">
 					@if(auth()->guest())

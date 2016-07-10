@@ -13,7 +13,7 @@
 
 
 
-Route::group(['prefix'=>'admin','middleware'=>'auth.checkrole'],function() {
+Route::group(['prefix'=>'admin','middleware'=>'auth.checkrole:admin'],function() {
     Route::resource('categories','CategoriesController');
     Route::resource('products','ProductsController');
     Route::resource('clients','ClientsController');
@@ -47,7 +47,7 @@ Route::group(['prefix'=>'auth'],function() {
     Route::post('resend', ['as' => 'auth.resend','uses'=>'Auth\AuthController@postResend']);
     Route::get('verify/{confirmationCode}', ['as' => 'auth.confirm', 'uses' => 'Auth\AuthController@confirm']);
 });
-Route::group(['prefix'=>'customer','as'=>'customer.'],function() {
+Route::group(['prefix'=>'customer','as'=>'customer.','middleware'=>'auth.checkrole:client'],function() {
     Route::get('order',['as'=>'order.index','uses'=>'CheckoutController@index']);
     Route::get('order/create',['as'=>'order.create','uses'=>'CheckoutController@create']);
     Route::post('order/store',['as'=>'order.store','uses'=>'CheckoutController@store']);
