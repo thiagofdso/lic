@@ -47,3 +47,7 @@ Route::group(['prefix'=>'auth'],function() {
     Route::post('resend', ['as' => 'auth.resend','uses'=>'Auth\AuthController@postResend']);
     Route::get('verify/{confirmationCode}', ['as' => 'auth.confirm', 'uses' => 'Auth\AuthController@confirm']);
 });
+Route::group(['prefix'=>'customer','as'=>'customer.'],function() {
+    Route::get('order/create',['as'=>'order.create','uses'=>'CheckoutController@create']);
+    Route::post('order/store',['as'=>'order.store','uses'=>'CheckoutController@store']);
+});
