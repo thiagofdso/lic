@@ -48,6 +48,9 @@ Route::group(['prefix'=>'auth'],function() {
     Route::get('verify/{confirmationCode}', ['as' => 'auth.confirm', 'uses' => 'Auth\AuthController@confirm']);
 });
 Route::group(['prefix'=>'customer','as'=>'customer.'],function() {
+    Route::get('order',['as'=>'order.index','uses'=>'CheckoutController@index']);
     Route::get('order/create',['as'=>'order.create','uses'=>'CheckoutController@create']);
     Route::post('order/store',['as'=>'order.store','uses'=>'CheckoutController@store']);
+    Route::get('order/{id}',['as'=>'order.show','uses'=>'CheckoutController@show']);
+    Route::delete('order/{id}',['as'=>'order.destroy','uses'=>'CheckoutController@destroy']);
 });

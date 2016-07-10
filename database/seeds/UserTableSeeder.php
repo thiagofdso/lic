@@ -20,7 +20,7 @@ class UserTableSeeder extends Seeder
             'remember_token' => str_random(10),
             'confirmed'=>1,
             'role'=>'admin',
-        ]);
+        ])->client()->save(factory(Client::class)->make());
         factory(User::class)->create([
             'name'=>'Admin',
             'email'=>'admin@user.com',
@@ -28,7 +28,7 @@ class UserTableSeeder extends Seeder
             'remember_token' => str_random(10),
             'confirmed'=>1,
             'role'=>'admin',
-        ]);
+        ])->client()->save(factory(Client::class)->make());
         factory(User::class)->create([
             'name'=>'User',
             'email'=>'user@gmail.com',
