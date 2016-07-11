@@ -58,3 +58,19 @@ Route::group(['prefix'=>'customer','as'=>'customer.','middleware'=>'auth.checkro
 Route::post('oauth/access_token', function() {
     return Response::json(Authorizer::issueAccessToken());
 });
+
+Route::group(['prefix'=>'api','middleware'=>'oauth','as'=>'api.'],function() {
+    Route::group(['prefix'=>'client','as'=>'client.'],function() {
+
+    });
+    Route::group(['prefix'=>'client','as'=>'client.'],function() {
+
+    });
+    Route::get('pedidos',function (){
+        return [
+        'id'=>'1',
+        'client'=>'Thiago Oliveira',
+        'total'=>10];
+    });
+
+});
