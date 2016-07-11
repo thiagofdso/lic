@@ -54,3 +54,7 @@ Route::group(['prefix'=>'customer','as'=>'customer.','middleware'=>'auth.checkro
     Route::get('order/{id}',['as'=>'order.show','uses'=>'CheckoutController@show']);
     Route::delete('order/{id}',['as'=>'order.destroy','uses'=>'CheckoutController@destroy']);
 });
+
+Route::post('oauth/access_token', function() {
+    return Response::json(Authorizer::issueAccessToken());
+});
