@@ -153,6 +153,8 @@ return [
         /*
          * Application Service Providers...
          */
+        LucaDegasperi\OAuth2Server\Storage\FluentStorageServiceProvider::class,
+        LucaDegasperi\OAuth2Server\OAuth2ServerServiceProvider::class,
         CodeDelivery\Providers\AppServiceProvider::class,
         CodeDelivery\Providers\AuthServiceProvider::class,
         CodeDelivery\Providers\EventServiceProvider::class,
