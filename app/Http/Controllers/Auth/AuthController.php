@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Validator;
 use CodeDelivery\Http\Controllers\Controller;
+use CodeDelivery\Http\Controllers\Auth\ConfirmedUser;
 use CodeDelivery\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -26,7 +27,7 @@ class AuthController extends Controller
     |
     */
 
-    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+    use AuthenticatesAndRegistersUsers, ThrottlesLogins, ConfirmedUser;
 
     /**
      * Where to redirect users after login / registration.
@@ -125,18 +126,44 @@ class AuthController extends Controller
      */
     protected function acessar(Request $request)
     {
-        $remenber = $request->get('remember')=='on';
-        $user = $this->user->where(['email' => $request->get('email')])->first();
-        if($user->confirmed==1)
-            if (Auth::attempt(['email'=>$request->get('email'),'password'=>$request->get('password')],$remenber) ){
-                Auth::login($user);
-                return redirect('/');
-            }else{
-                return redirect('auth/login')->with('error', 'Email ou Senha incorretos.');
-            }
-        else
-            return redirect('auth/login')->with('error', 'Usuário não confirmado, verifique  o seu email.');
+        $this->validateLogin($request);
+
+        // If the class is using the ThrottlesLogins trait, we can automatically throttle
+        // the login attempts for this application. We'll key this by the username and
+        // the IP address of the client making these requests into this application.
+        $throttles = $this->isUsingThrottlesLoginsTrait();
+
+        if ($throttles && $lockedOut = $this->hasTooManyLoginAttempts($request)) {
+            $this->fireLockoutEvent($request);
+
+            return $this->sendLockoutResponse($request);
+        }
+
+        $credentials = $this->getCredentials($request);
+
+		if (Auth::attempt($credentials, $request->has('remember'))) {
+			return $this->handleUserWasAuthenticated($request, $throttles);
+		}
+
+        // If the login attempt was unsuccessful we will increment the number of attempts
+        // to login and redirect the user back to the login form. Of course, when this
+        // user surpasses their maximum number of attempts they will get locked out.
+        if ($throttles && !$lockedOut) {
+            $this->incrementLoginAttempts($request);
+        }
+
+        return $this->sendFailedLoginResponse($request);
+
     }
+	public function authenticated(Request $request,User $user){
+		if($user->confirmed==1){
+			return redirect('/');
+		}else{
+			Auth::logout();
+			return $this->sendUnconfirmedUserResponse($request);	
+		}
+		return $user;
+	}
     protected function sair()
     {
         if (Auth::check())
@@ -149,7 +176,7 @@ class AuthController extends Controller
         if( ! $confirmation_code)
         {
             //throw new InvalidConfirmationCodeException;
-            return "codigo incorreto";
+             return "codigo incorreto";
         }
 
         $user = $this->user->where(['confirmation_code' => $confirmation_code])->first();

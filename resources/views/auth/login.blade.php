@@ -16,9 +16,7 @@
 					@if (count($errors) > 0|| session('error'))
 						<div class="alert alert-danger">
 							<ul>
-							<strong>Opa!</strong> Existem alguns problema com seus dados.<br><br>
-							<li>{{ session('error') }}</li>
-
+							<strong>Opa!</strong> Existe algum erro com seus dados.<br><br>
 								@foreach ($errors->all() as $error)
 									<li>{{ $error }}</li>
 								@endforeach

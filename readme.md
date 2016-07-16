@@ -1,8 +1,15 @@
+<style>
+ .command1{
+   color:#acc;
+ }
+</style>
 # Laravel Com Ionic
 
-## criar tabelas e "seedar"
-php artisan migrate:refresh --seed
+## Criar tabelas e "seedar"
+```bash
+$ php artisan migrate:refresh --seed
+```
 
 ## para fazer testes
-login: admin@user.com
-password: 123456
+<b>Login:</b> admin@user.com<br>
+<b>Password:</b> 123456

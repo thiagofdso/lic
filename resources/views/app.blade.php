@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Laravel</title>
 
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+	<link href="{{ asset('/css/bootstrap.min.css') }}" rel="stylesheet">
 
 	<!-- Fonts -->
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
@@ -51,10 +51,10 @@
 				<ul class="nav navbar-nav navbar-right">
 					@if(auth()->guest())
 						@if(!Request::is('auth/login'))
-							<li><a href="{{ url('/auth/login') }}">Entrar</a></li>
+							<li><a href="{{ url('/auth/login') }}">{{Lang::get('app.login')}}</a></li>
 						@endif
 						@if(!Request::is('auth/register'))
-							<li><a href="{{ url('/auth/register') }}">Registrar</a></li>
+							<li><a href="{{ url('/auth/register') }}">{{Lang::get('app.register')}}</a></li>
 						@endif
 					@else
 						<li class="dropdown">
@@ -72,8 +72,8 @@
 	@yield('content')
 	</div>
 	<!-- Scripts -->
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script src="{{ asset('/js/jquery.min.js') }}"></script>
+	<script src="{{ asset('/js/bootstrap.min.js') }}"></script>
 	@yield('post-script')
 </body>
 </html>
