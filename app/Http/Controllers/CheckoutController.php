@@ -31,6 +31,7 @@ class CheckoutController extends Controller
         })->paginate(10);
         return view('customer.order.index',compact('orders'));
     }
+
     public function create(){
         $products = $this->productRepository->lista();
         return view('customer.order.create',compact('products'));
@@ -53,6 +54,7 @@ class CheckoutController extends Controller
         $order = $this->repository->find($id);
         return view('customer.order.edit',compact('order'));
     }
+
     public function update($id,Request $request){
         $this->orderRepository->find($id);
         $this->orderRepository->update($request->all(),$id);

@@ -17,6 +17,18 @@ class Order extends Model implements Transformable
         'status',
     ];
 
+    public function getStatusAttribute($value){
+        return EnumOrderStatus::getStatus($value);
+    }
+    public function setStatusAttribute($value){
+        if(is_numeric($value))
+            $this->attributes['status'] = $value;
+        else
+            $this->attributes['status'] = EnumOrderStatus::getStatusId($value);
+    }
+    public function cupom(){
+        return $this->belongsTo(Cupom::class);
+    }
     public function items(){
         return $this->hasMany(OrderItem::class);
     }
@@ -25,9 +37,6 @@ class Order extends Model implements Transformable
     }
     public function deliveryman(){
         return $this->belongsTo(User::class,'user_deliveryman_id');
-    }
-    public function  getStatus(){
-        return EnumOrderStatus::getStatus($this->status);
     }
 
 }

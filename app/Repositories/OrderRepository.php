@@ -10,5 +10,6 @@ use Prettus\Repository\Contracts\RepositoryInterface;
  */
 interface OrderRepository extends RepositoryInterface
 {
-    //
+    public function findByIdAndDeliveryman($id,$idDeliveryman);
+    public function findByIdDeliveryman($idDeliveryman);
 }

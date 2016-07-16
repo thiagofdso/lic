@@ -27,7 +27,7 @@
                         @endif
                     </td>
                     <td>{{$order->total}}</td>
-                    <td>{{$order->getStatus()}}</td>
+                    <td>{{$order->status}}</td>
                     <td >
                         {!! Form::open(['route'=>['customer.order.destroy',$order->id],'method'=>'delete']) !!}
                         <a href="{{route('customer.order.show',['id'=>$order->id])}}" class="btn btn-info ">Exibir</a>

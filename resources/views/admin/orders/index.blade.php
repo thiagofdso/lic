@@ -35,7 +35,7 @@
                             Sem entregador
                         @endif
                     </td>
-                    <td>{{$order->getStatus()}}</td>
+                    <td>{{$order->status}}</td>
                     <td >
                         {!! Form::open(['route'=>['admin.orders.destroy',$order->id],'method'=>'delete']) !!}
                         <a href="{{route('admin.orders.show',['id'=>$order->id])}}" class="btn btn-info ">Exibir</a>

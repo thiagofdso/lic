@@ -20,7 +20,15 @@ class EnumOrderStatus
     {
         return EnumOrderStatus::$status[$statusId];
     }
+    public static function getStatusId($status)
+    {
+        return array_search($status, EnumOrderStatus::$status);
+    }
     public static function getList(){
-        return EnumOrderStatus::$status;
+        return [
+            'Pendente' =>'Pendente',
+            'A caminho' =>'A caminho',
+            'Entregue' =>'Entregue'
+        ];
     }
 }
