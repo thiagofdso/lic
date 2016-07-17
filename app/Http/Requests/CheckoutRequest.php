@@ -23,9 +23,19 @@ class CheckoutRequest extends Request
      */
     public function rules()
     {
-        return [
+        $rules =[
             'cupom_code' => 'exists:cupoms,code,used,0',
-
         ];
+        $this->buildRulesItems(0,$rules);
+        $items = $this->get('items',[]);
+        $items = !is_array($items) ? [] : $items;
+        foreach ($items as $key => $val){
+            $this->buildRulesItems($key,$rules);
+        }
+        return $rules;
+    }
+    public function  buildRulesItems($key,array &$rules){
+        $rules["items.$key.product_id"] = 'required|exists:products,id';
+        $rules["items.$key.qtd"] = 'required|numeric|min:1';
     }
 }
