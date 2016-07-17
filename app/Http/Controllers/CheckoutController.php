@@ -7,7 +7,7 @@ use CodeDelivery\Repositories\ProductRepository;
 use CodeDelivery\Repositories\UserRepository;
 use CodeDelivery\Services\OrderService;
 use Illuminate\Http\Request;
-use CodeDelivery\Http\Requests;
+use CodeDelivery\Http\Requests\CheckoutRequest;
 use Illuminate\Support\Facades\Auth;
 
 class CheckoutController extends Controller
@@ -37,7 +37,7 @@ class CheckoutController extends Controller
         return view('customer.order.create',compact('products'));
     }
 
-    public function store(Request $request){
+    public function store(CheckoutRequest $request){
         $data = $request->all();
         $clientID = $this->userRepository->find(Auth::user()->id)->client->id;
         $data['client_id'] = $clientID;
