@@ -54,7 +54,6 @@ Route::group(['prefix'=>'customer','middleware'=>'auth.checkrole:client'],functi
 Route::post('oauth/access_token', function() {
     return Response::json(Authorizer::issueAccessToken());
 });
-
 Route::group(['prefix'=>'api','middleware'=>'oauth'],function() {
     Route::get('teste',function (){
         return "Teste de Autenticaçãod do OAuth2";

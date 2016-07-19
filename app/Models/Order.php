@@ -9,7 +9,12 @@ use Prettus\Repository\Traits\TransformableTrait;
 class Order extends Model implements Transformable
 {
     use TransformableTrait;
-
+    public function transform()
+    {
+        return [
+            'id'=>$this->id
+        ];
+    }
     protected $fillable=[
         'client_id',
         'user_deliveryman_id',
