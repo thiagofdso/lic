@@ -68,7 +68,7 @@ class OrderService
     }
 
     public function updateStatus($id,$idDeliveryman,$status){
-        $order = $this->orderRepository->findByIdAndDeliveryman($id,$idDeliveryman);
+        $order = $this->orderRepository->skipPresenter()->findByIdAndDeliveryman($id,$idDeliveryman);
         if($order instanceof Order){
             $order->status = $status;
             $order->save();
