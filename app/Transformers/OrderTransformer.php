@@ -12,8 +12,8 @@ use CodeDelivery\Models\Order;
 class OrderTransformer extends TransformerAbstract
 {
 
-    protected $defaultIncludes = ['cupom'];
-    //protected $availableIncludes = [];
+    protected $defaultIncludes = ['cupom','items'];
+//    protected $availableIncludes = ['cupom','items'];
     /**
      * Transform the \Order entity
      * @param \Order $model
@@ -41,5 +41,8 @@ class OrderTransformer extends TransformerAbstract
         return $this->item($model->cupom,new CupomTransformer());
     }
     //One To Many  -> OrderItem
+    public function includeItems(Order $model){
+        return $this->collection($model->items,new OrderItemTransformer());
+    }
 
 }

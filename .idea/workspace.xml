@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0ff622bd-029d-4cea-ad1c-3e00518f0001" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Presenters/CupomPresenter.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Presenters/OrderItemPresenter.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Transformers/CupomTransformer.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Transformers/OrderItemTransformer.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Transformers/OrderItemTransformer.php" afterPath="$PROJECT_DIR$/app/Transformers/OrderItemTransformer.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Transformers/OrderTransformer.php" afterPath="$PROJECT_DIR$/app/Transformers/OrderTransformer.php" />
     </list>
     <list id="8bce404d-6ea0-42cf-9908-2caf4a0d02ef" name="Failed commit: Default" comment="arquivos do projeto de autenticação oauth2" />
@@ -44,18 +41,28 @@
       <file leaf-file-name="OrderTransformer.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Transformers/OrderTransformer.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="346">
-              <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+            <state relative-caret-position="357">
+              <caret line="22" column="43" selection-start-line="22" selection-start-column="43" selection-end-line="22" selection-end-column="43" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CupomTransformer.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Transformers/CupomTransformer.php">
+      <file leaf-file-name="OrderItemTransformer.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Transformers/OrderItemTransformer.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="24" column="35" selection-start-line="24" selection-start-column="35" selection-end-line="24" selection-end-column="35" />
+            <state relative-caret-position="374">
+              <caret line="23" column="45" selection-start-line="23" selection-start-column="45" selection-end-line="23" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OrderItem.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Models/OrderItem.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="13" column="19" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -69,7 +76,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Http/Requests/AdminOrderRequest.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/orders/form.blade.php" />
         <option value="$PROJECT_DIR$/app/Repositories/UserRepositoryEloquent.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/orders/edit.blade.php" />
@@ -119,6 +125,7 @@
         <option value="$PROJECT_DIR$/app/Repositories/OrderRepositoryEloquent.php" />
         <option value="$PROJECT_DIR$/app/Services/OrderService.php" />
         <option value="$PROJECT_DIR$/app/Transformers/CupomTransformer.php" />
+        <option value="$PROJECT_DIR$/app/Transformers/OrderItemTransformer.php" />
         <option value="$PROJECT_DIR$/app/Transformers/OrderTransformer.php" />
       </list>
     </option>
@@ -417,7 +424,7 @@
       <workItem from="1468694098993" duration="12784000" />
       <workItem from="1468778445732" duration="6543000" />
       <workItem from="1468806194091" duration="320000" />
-      <workItem from="1468954660972" duration="5372000" />
+      <workItem from="1468954660972" duration="5861000" />
     </task>
     <task id="LOCAL-00001" summary="Configuração inicial, mudança do namespace da aplicação, criação do diretório model, configuração do banco de dados">
       <created>1466375058442</created>
@@ -699,11 +706,18 @@
       <option name="project" value="LOCAL" />
       <updated>1468959703415</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="adicionado cupomtransformer dentro de ordertransformer">
+      <created>1468960771901</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1468960771901</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="98827000" />
+    <option name="totallyTimeSpent" value="99316000" />
   </component>
   <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
@@ -752,7 +766,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="adicionado cupomtableseeder" />
     <MESSAGE value="inserido crud, controler e rota de cupom" />
     <MESSAGE value="adicionado request de cupom" />
     <MESSAGE value="adicionado formulário de criação de pedido e serviço de criação no banco de dados" />
@@ -777,7 +790,8 @@
     <MESSAGE value="inserido transformer dentro de order e orderrepository" />
     <MESSAGE value="removido modeltransformer de order e adicionado presenter e transformer" />
     <MESSAGE value="orderservice ignorando presenter" />
-    <option name="LAST_COMMIT_MESSAGE" value="orderservice ignorando presenter" />
+    <MESSAGE value="adicionado cupomtransformer dentro de ordertransformer" />
+    <option name="LAST_COMMIT_MESSAGE" value="adicionado cupomtransformer dentro de ordertransformer" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -792,20 +806,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/categories/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="5" selection-end-column="97" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/customer/order/create.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -1163,10 +1163,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/OrderItem.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="13" column="19" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Transformers/OrderItemTransformer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="23" column="45" selection-start-line="23" selection-start-column="45" selection-end-line="23" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Transformers/OrderTransformer.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+        <state relative-caret-position="357">
+          <caret line="22" column="43" selection-start-line="22" selection-start-column="43" selection-end-line="22" selection-end-column="43" />
           <folding />
         </state>
       </provider>
