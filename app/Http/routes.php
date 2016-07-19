@@ -59,6 +59,9 @@ Route::group(['prefix'=>'api','middleware'=>'oauth'],function() {
     Route::get('teste',function (){
         return "Teste de Autenticaçãod do OAuth2";
     });
+    Route::get('authenticated ',function (CodeDelivery\Repositories\UserRepository $userRepository){
+            return $userRepository->find(Authorizer::getResourceOwnerId());
+    });
     Route::group(['prefix'=>'client','middleware'=>'oauth.checkrole:client'],function() {
         Route::resource('order', 'Api\Client\ClientCheckoutController',
                         ['except' => ['create','edit','destroy']]);

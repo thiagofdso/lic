@@ -25,7 +25,7 @@ class User extends Authenticatable implements Transformable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token','confirmation_code',
     ];
     public function client(){
         return $this->hasOne(Client::class);
