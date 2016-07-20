@@ -2,6 +2,7 @@
 
 namespace CodeDelivery\Repositories;
 
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Collection;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
@@ -15,6 +16,7 @@ use CodeDelivery\Validators\OrderValidator;
  */
 class OrderRepositoryEloquent extends BaseRepository implements OrderRepository
 {
+    protected $skipPresenter = true;
     /**
      * Specify Model class name
      *
@@ -32,10 +34,14 @@ class OrderRepositoryEloquent extends BaseRepository implements OrderRepository
         ]);
         if($result instanceof  Collection){
             $result = $result->first();
-            $result->items->each(function($item){
-                $item->product->category;
-            });
-            $result->client->client;
+        }else{
+            if(isset($result['data']) && count($result['data']) == 1){
+                $result = [
+                    'data' => $result['data'][0]
+                ];
+            }else{
+                throw new ModelNotFoundException('Pedido não existe');
+            }
         }
         return $result;
     }
@@ -46,12 +52,6 @@ class OrderRepositoryEloquent extends BaseRepository implements OrderRepository
         ]);
         if($result instanceof  Collection){
             $result = $result->all();
-            foreach ($result as $order){
-                $order->client->client;
-                $order->items->each(function($item){
-                    $item->product->category;
-                });
-            }
         }
         return $result;
     }

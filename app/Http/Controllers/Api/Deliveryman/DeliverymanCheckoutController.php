@@ -16,6 +16,7 @@ class DeliverymanCheckoutController extends Controller
     private $service;
     private $userRepository;
 
+    private $with = ['client','items','deliveryman'];
     public function __construct(OrderRepository $orderRepository,UserRepository $userRepository,OrderService $service)
     {
         $this->orderRepository = $orderRepository;
@@ -25,7 +26,10 @@ class DeliverymanCheckoutController extends Controller
 
     public function index(){
         $idDeliveryman = Authorizer::getResourceOwnerId();
-        $orders = $this->orderRepository->findByIdDeliveryman($idDeliveryman);
+        $orders = $this->orderRepository
+            ->skipPresenter(false)
+  //          ->with($this->with)
+            ->findByIdDeliveryman($idDeliveryman);
 
         return $orders;
     }
@@ -33,13 +37,20 @@ class DeliverymanCheckoutController extends Controller
 
     public function show($id){
         $idDeliveryman = Authorizer::getResourceOwnerId();
-        $order = $this->orderRepository->findByIdAndDeliveryman($id,$idDeliveryman);
+        $order = $this->orderRepository
+            ->skipPresenter(false)
+//            ->with($this->with)
+            ->findByIdAndDeliveryman($id,$idDeliveryman);
         return $order;
     }
 
     public function updateStatus($id,Request $request){
         $idDeliveryman = Authorizer::getResourceOwnerId();
-        $order=$this->service->updateStatus($id,$idDeliveryman,$request->get('status'));
+        $orderUpdated=$this->service->updateStatus($id,$idDeliveryman,$request->get('status'));
+        $order = $this->orderRepository
+            ->skipPresenter(false)
+//            ->with($this->with)
+            ->findByIdAndDeliveryman($id,$idDeliveryman);
         if($order)
             return $order;
         else

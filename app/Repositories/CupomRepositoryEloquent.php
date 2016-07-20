@@ -14,6 +14,7 @@ use CodeDelivery\Validators\CupomValidator;
  */
 class CupomRepositoryEloquent extends BaseRepository implements CupomRepository
 {
+    protected $skipPresenter = true;
     /**
      * Specify Model class name
      *
@@ -33,4 +34,9 @@ class CupomRepositoryEloquent extends BaseRepository implements CupomRepository
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
+    public function presenter()
+    {
+        return \CodeDelivery\Presenters\CupomPresenter::class;
+    }
+
 }

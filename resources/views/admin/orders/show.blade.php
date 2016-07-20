@@ -26,7 +26,7 @@
         </tr>
         <tr>
             <th>Status:</th>
-            <td>{{$order->getStatus()}}</td>
+            <td>{{$order->status}}</td>
         </tr>
         <tr>
             <th>Entregador:</th>

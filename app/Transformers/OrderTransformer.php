@@ -12,7 +12,7 @@ use CodeDelivery\Models\Order;
 class OrderTransformer extends TransformerAbstract
 {
 
-    protected $defaultIncludes = ['cupom','items'];
+    protected $defaultIncludes = ['client','deliveryman','cupom','items'];
 //    protected $availableIncludes = ['cupom','items'];
     /**
      * Transform the \Order entity
@@ -27,12 +27,22 @@ class OrderTransformer extends TransformerAbstract
 
 
             /* place your other model properties here */
-            'total'      => (float) $model->total,
+            'Total'      => (float) $model->total,
 
             'created_at' => $model->created_at,
             'updated_at' => $model->updated_at
         ];
 
+    }
+    //Many To One  -> Deliveryman
+    public function includeDeliveryman(Order $model){
+        if(!$model->deliveryman)
+            return null;
+        return $this->item($model->deliveryman,new UserTransformer());
+    }
+    //Many To One  -> Client
+    public function includeClient(Order $model){
+        return $this->item($model->client,new UserTransformer());
     }
     //Many To One  -> Cupom
     public function includeCupom(Order $model){

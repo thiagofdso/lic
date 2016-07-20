@@ -26,7 +26,7 @@
         </tr>
         <tr>
             <th>Status:</th>
-            <td>{{$order->getStatus()}}</td>
+            <td>{{$order->status}}</td>
         </tr>
         <tr>
             <th>Entregador:</th>
@@ -38,6 +38,28 @@
                 @endif
             </td>
         </tr>
+            <tr>
+                <td colspan="2">
+            <table class="table">
+                <tbody>
+         <tr>
+             <th>Produtos</th>
+             <th>Preço</th>
+             <th>Quantia</th>
+             <th>Total</th>
+         </tr>
+            @foreach($order->items as $item)
+            <tr>
+                <td>{{$item->product->name}}</td>
+                <td>R$ {{$item->price}}</td>
+                <td>{{$item->qtd}}</td>
+                <td>R$ {{$item->qtd*$item->price}}</td>
+            </tr>
+            @endforeach
+                </tbody>
+                </table>
+                </td>
+            </tr>
         </table>
         <br>
         <a href="{{URL::previous()}}" class="btn btn-info">Voltar</a>

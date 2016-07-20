@@ -14,6 +14,7 @@ use CodeDelivery\Validators\ClientValidator;
  */
 class ClientRepositoryEloquent extends BaseRepository implements ClientRepository
 {
+    protected $skipPresenter = true;
     /**
      * Specify Model class name
      *
@@ -33,4 +34,9 @@ class ClientRepositoryEloquent extends BaseRepository implements ClientRepositor
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
+    public function presenter()
+    {
+        return \CodeDelivery\Presenters\ClientPresenter::class;
+    }
+
 }

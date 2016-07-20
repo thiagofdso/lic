@@ -14,7 +14,7 @@ use CodeDelivery\Validators\CategoryValidator;
  */
 class CategoryRepositoryEloquent extends BaseRepository implements CategoryRepository
 {
-
+    protected $skipPresenter = true;
     /**
      * Specify Model class name
      *
@@ -34,4 +34,9 @@ class CategoryRepositoryEloquent extends BaseRepository implements CategoryRepos
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
+    public function presenter()
+    {
+        return \CodeDelivery\Presenters\CategoryPresenter::class;
+    }
+
 }
