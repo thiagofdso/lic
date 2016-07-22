@@ -11,7 +11,7 @@ use CodeDelivery\Models\Client;
  */
 class ClientTransformer extends TransformerAbstract
 {
-
+    protected $defaultIncludes = ['user'];
     /**
      * Transform the \Client entity
      * @param \Client $model
@@ -32,4 +32,8 @@ class ClientTransformer extends TransformerAbstract
             'updated_at' => $model->updated_at*/
         ];
     }
+    public function includeUser(Client $model){
+        return $this->item($model->user,new ClientUserTransformer());
+    }
+
 }

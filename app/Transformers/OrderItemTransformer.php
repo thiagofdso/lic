@@ -21,10 +21,10 @@ class OrderItemTransformer extends TransformerAbstract
     public function transform(OrderItem $model)
     {
         return [
-            'id'         => (int) $model->id,
+//            'id'         => (int) $model->id,
             'Preço' => $model->price,
             'Quantia' => $model->qtd,
-            'Total' => $model->price * $model->qtd,
+//            'Total' => $model->price * $model->qtd,
             /* place your other model properties here */
 
         ];
